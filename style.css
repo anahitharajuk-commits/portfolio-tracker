@@ -1,0 +1,458 @@
+/* ==========================================================================
+   3.1 DESIGN TOKENS (TOP OF FILE)
+   ========================================================================== */
+   /* ==========================================================================
+   1. THEME DESIGN TOKENS (PLACE CODE HERE AT THE VERTICAL TOP)
+   ========================================================================== */
+:root {
+    /* Light Mode Palette (Default Cream) */
+    --surface: #FCFAF3;
+    --card: #FFFFFF;
+    --border: #E8E5DA;
+    --primary: #4A7BB0;
+    --ink: #1A1F26;
+    --ink-muted: #5C6470;
+    
+    /* Spacing & Utilities */
+    --s4: 4px; --s8: 8px; --s12: 12px; --s16: 16px; 
+    --s24: 24px; --s32: 32px; --s48: 48px; --s64: 64px;
+    --r-pill: 9999px; --r-md: 8px; --r-lg: 16px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* Dark Mode Overrides */
+body.dark {
+    --surface: #0F1419;
+    --card: #151C24;
+    --border: #242F3D;
+    --ink: #F5F7FA;
+    --ink-muted: #8B98A5;
+}
+
+/* ==========================================================================
+   2. GLOBAL BASE STYLES (Below the tokens)
+   ========================================================================== */
+body {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+}
+
+/* ==========================================================================
+   3. COMPONENT STYLES (Navigation, Hero, Cards go down here...)
+   ========================================================================== */
+
+:root {
+    /* Colours - exact hex codes translated from Figma Foundations */
+    --primary: #5A8FBD;
+    --ink: #1a1a1a;
+    --ink-muted: #6B6B6B;
+    --surface: #FCFAf3;
+    --card: #FFFFFF;
+    --border: #EFE9D8;
+    --pri-high: #C76A55; 
+    --pri-med: #C9A23A; 
+    --pri-low: #7A9165;
+
+    /* Type scale - matches S01 text styles */
+    --display: clamp(2.2rem, 6vw, 3.6rem);
+    --h1: 2rem; 
+    --h2: 1.6rem; 
+    --h3: 1.2rem; 
+    --body: 1rem;
+    --cap: 0.875rem; 
+    --sm: 0.75rem;
+
+    /* Spacing - 8-point grid in rem */
+    --s4: 0.25rem; 
+    --s8: 0.5rem; 
+    --s12: 0.75rem; 
+    --s16: 1rem;
+    --s24: 1.5rem; 
+    --s32: 2rem; 
+    --s48: 3rem; 
+    --s64: 4rem;
+
+    /* Radius + shadow */
+    --r-sm: 8px; 
+    --r-md: 12px; 
+    --r-lg: 16px; 
+    --r-pill: 999px;
+    --shadow: 0 4px 16px rgba(26,26,26,0.06);
+}
+
+/* ==========================================================================
+   3.2 DARK MODE - REDEFINE THE COLOURS
+   ========================================================================== */
+body.dark {
+    --primary: #7FB3D5;
+    --ink: #F5F1E4;
+    --ink-muted: #9BA3AC;
+    --surface: #0F1419;
+    --card: #1A2332;
+    --border: rgba(255,255,255,0.12);
+    --shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+/* ==========================================================================
+   2. GLOBAL BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    /* Smooth theme transition layer */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Typography Linking */
+h1, h2, h3, h4, strong {
+    color: var(--ink);
+    transition: color 0.3s ease;
+}
+
+/* Global Link Reset */
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+/* Ensure images and components align cleanly */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ==========================================================================
+   3.3 RESET AND BASE STYLES
+   ========================================================================== */
+/* Reset: predictable sizing, no surprise gaps */
+*, *::before, *::after {
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0;
+}
+
+html { 
+    scroll-behavior: smooth; /* nav links glide, don't jump */
+}
+
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: var(--surface); 
+    color: var(--ink);
+    line-height: 1.65;
+    transition: background-color 0.3s ease, color 0.3s ease; /* smooth dark fade */
+    padding-top: 80px; /* leaves room for fixed navbar */
+}
+
+a { 
+    color: inherit; 
+    text-decoration: none; 
+}
+
+ul { 
+    list-style: none; 
+}
+
+.container { /* centres content, caps width */
+    max-width: 1040px; 
+    margin: 0 auto; 
+    padding: 0 var(--s24);
+}
+
+/* ==========================================================================
+   BASIC NAVIGATION & HERO COMPONENT ALIGNMENT
+   ========================================================================== */
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--surface);
+    border-bottom: 1px solid var(--border);
+    z-index: 1000;
+}
+
+.nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--s16) 0;
+}
+
+.nav-brand {
+    font-weight: 700;
+    font-size: var(--h3);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: var(--s24);
+}
+
+.theme-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: var(--h3);
+}
+
+.hero {
+    padding: var(--s64) 0;
+}
+
+.hero-tag {
+    color: var(--primary);
+    font-size: var(--body);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.hero-name {
+    font-size: var(--display);
+    font-weight: 800;
+    margin: var(--s4) 0;
+}
+
+.hero-role {
+    font-size: var(--h2);
+    color: var(--ink-muted);
+    margin-bottom: var(--s16);
+}
+
+.hero-ctas {
+    display: flex;
+    gap: var(--s16);
+    margin-top: var(--s24);
+}
+
+.btn {
+    padding: var(--s12) var(--s24);
+    border-radius: var(--r-sm);
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: var(--surface);
+}
+
+.btn-secondary {
+    border: 1px solid var(--border);
+    background-color: var(--card);
+}
+/* ==========================================================================
+   5. PROJECTS GRID & CARDS
+   ========================================================================== */
+.section {
+    padding: var(--s64) 0;
+}
+
+.section-label {
+    font-size: var(--cap);
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.section-title {
+    font-size: var(--h1);
+    font-weight: 800;
+    margin-bottom: var(--s32);
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--s24);
+}
+
+/* Individual Card Blocks */
+.card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: var(--s24);
+    box-shadow: var(--shadow);
+}
+
+.card-tag {
+    font-size: var(--sm);
+    color: var(--ink-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.card-title {
+    font-size: var(--h2);
+    font-weight: 700;
+    margin: var(--s4) 0 var(--s12) 0;
+}
+
+.card-desc {
+    color: var(--ink-muted);
+    font-size: var(--body);
+    margin-bottom: var(--s16);
+}
+
+/* Card Chips Layout */
+.card-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--s8);
+    margin-bottom: var(--s24);
+}
+
+.chip {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    padding: var(--s4) var(--s12);
+    border-radius: var(--r-pill);
+    font-size: var(--cap);
+    font-weight: 500;
+}
+
+.card-link {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: var(--body);
+}
+
+/* Desktop Grid Upgrade */
+@media (min-width: 768px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+/* ==========================================================================
+   6. SKILLS BARS, CONTACT & FOOTER
+   ========================================================================== */
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s24);
+    max-width: 600px;
+}
+
+.skill-head {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    margin-bottom: var(--s8);
+}
+
+.skill-track {
+    width: 100%;
+    height: 8px;
+    background-color: var(--border);
+    border-radius: var(--r-pill);
+    overflow: hidden;
+}
+
+.skill-fill {
+    height: 100%;
+    width: var(--w); /* Uses the inline HTML styling variable safely */
+    border-radius: var(--r-pill);
+    transition: width 1s cubic-bezier(0.1, 1, 0.1, 1);
+}
+
+/* Contact Card Formatting */
+.contact-card {
+    background-color: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--s32);
+    text-align: center;
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-card p {
+    color: var(--ink-muted);
+    margin-bottom: var(--s24);
+    font-size: var(--h3);
+}
+
+/* Footer Section */
+.footer {
+    padding: var(--s32) 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    font-size: var(--cap);
+    color: var(--ink-muted);
+    background-color: var(--surface);
+}
+/* ==========================================================================
+   7. ANIMATION UTILITIES (.reveal)
+   ========================================================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: transform, opacity;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* ==========================================================================
+   6.2 BACK TO TOP COMPONENT
+   ========================================================================== */
+.to-top {
+    position: fixed;
+    bottom: var(--s32);
+    right: var(--s32);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--r-pill);
+    background-color: var(--primary);
+    color: #FFFFFF;
+    border: none;
+    font-size: var(--h3);
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow);
+    
+    /* Hidden status by default */
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(16px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+    z-index: 99;
+}
+
+/* Toggle visibility when scrolled down */
+.to-top.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.to-top:hover {
+    background-color: var(--pri-high);
+    transform: scale(1.05);
+}
+
