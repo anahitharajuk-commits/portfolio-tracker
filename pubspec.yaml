@@ -1,0 +1,28 @@
+name: tide_app
+description: "A beautiful task management app built with Flutter and Firebase."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase Core (Required for all Firebase features)
+  firebase_core: ^3.1.1
+
+  # Firebase Authentication (For login/signup)
+  firebase_auth: ^5.1.1
+
+  # Cloud Firestore (The NoSQL Cloud Database)
+  cloud_firestore: ^5.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
